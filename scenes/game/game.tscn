@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvq4odl27b5dg"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_882sq"]
+[ext_resource type="PackedScene" uid="uid://gyqf85iwscoj" path="res://scenes/ball/ball.tscn" id="1_blyqj"]
+[ext_resource type="Texture2D" uid="uid://dryaub5qk053j" path="res://assets/images/fancy-court.png" id="1_ew3hq"]
+[ext_resource type="PackedScene" uid="uid://bmf0hrdyrp6lj" path="res://scenes/barrier/barrier.tscn" id="2_osk2m"]
+[ext_resource type="PackedScene" uid="uid://dfui1wxd3dxgu" path="res://scenes/barrier_score/barrier_score.tscn" id="3_gpt20"]
+[ext_resource type="PackedScene" uid="uid://b6lux06cnnxx3" path="res://scenes/paddle/paddle.tscn" id="4_yg47p"]
+[ext_resource type="PackedScene" uid="uid://cgog6ms5m4ncm" path="res://scenes/score/score.tscn" id="8_hoyr5"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_882sq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ew3hq")
+centered = false
+
+[node name="ball" parent="." instance=ExtResource("1_blyqj")]
+position = Vector2(400, 300)
+
+[node name="barrier_up" parent="." instance=ExtResource("2_osk2m")]
+position = Vector2(-137, -4)
+
+[node name="barrier_down" parent="." instance=ExtResource("2_osk2m")]
+position = Vector2(-72, 597)
+
+[node name="barrier_score_left" parent="." instance=ExtResource("3_gpt20")]
+position = Vector2(-9, 0)
+
+[node name="barrier_score_right" parent="." instance=ExtResource("3_gpt20")]
+position = Vector2(816, -28)
+
+[node name="paddle_left" parent="." instance=ExtResource("4_yg47p")]
+position = Vector2(25, 300)
+
+[node name="paddle_right" parent="." instance=ExtResource("4_yg47p")]
+position = Vector2(775, 300)
+rotation = -1.5708
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.7
+
+[node name="Score" parent="." instance=ExtResource("8_hoyr5")]
+offset_left = 400.0
+offset_right = 400.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

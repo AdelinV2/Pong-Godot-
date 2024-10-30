@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgog6ms5m4ncm"]
+
+[ext_resource type="Script" path="res://scenes/score/score.gd" id="1_unwi1"]
+[ext_resource type="LabelSettings" uid="uid://crfflx6osnyob" path="res://assets/LG_WH_24.tres" id="2_dvynl"]
+[ext_resource type="LabelSettings" uid="uid://beo86oqk6re18" path="res://assets/LG_WH_48.tres" id="3_wsx1w"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_unwi1")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="HB" type="HBoxContainer" parent="MC/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="LeftScore" type="Label" parent="MC/VBoxContainer/HB"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_dvynl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightScore" type="Label" parent="MC/VBoxContainer/HB"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_dvynl")
+
+[node name="ScoredLabel" type="Label" parent="MC/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "right player scored!"
+label_settings = ExtResource("3_wsx1w")
